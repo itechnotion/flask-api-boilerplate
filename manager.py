@@ -1,21 +1,24 @@
-import os, sys
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+import os
+from flask_script import Manager
 
-from config import Config
-
-from flask_script import Manager, Server
+from apis import bp_api_v1
 from app import create_app
-app = create_app(Config)
+
+app = create_app(object)
+app.register_blueprint(bp_api_v1,url_prefix='/api/v1')
+
+app.app_context().push()
+
 manager = Manager(app)
 
-# Turn on debugger by default and reloader
-manager.add_command("runserver", Server(
-    use_debugger = True,
-    use_reloader = True,
-    host = os.getenv('IP', '0.0.0.0'),
-    port = int(os.getenv('PORT', 5000)))
-)
+@manager.command
+def run():
+    app.run()
 
-if __name__ == "__main__":
+
+@manager.command
+def test():
+    """Runs the unit tests."""
     
+if __name__ == '__main__':
     manager.run()

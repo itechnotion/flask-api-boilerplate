@@ -8,13 +8,15 @@ class Config(object):
 
 class ProductionConfig(Config):
     DEBUG = False
-    MONGO_URI="mongodb://localhost:27017/pro"
+    MONGO_URI="mongodb://localhost:27017/"
+    DB_NAME="test"
     IMAGE_UPLOADS = "/home/username/projects/my_app/app/static/images/uploads"
     SESSION_COOKIE_SECURE = True
 
 class DevelopmentConfig(Config):
     DEBUG = True   
-    MONGO_URI="mongodb://localhost:27017/test"
+    MONGO_URI="mongodb://localhost:27017/"
+    DB_NAME="test"
     IMAGE_UPLOADS = "/home/username/projects/my_app/app/static/images/uploads"
     SESSION_COOKIE_SECURE = False
 

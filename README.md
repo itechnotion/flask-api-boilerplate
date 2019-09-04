@@ -21,8 +21,7 @@ Config : https://pythonise.com/feed/flask/flask-configuration-files#config-basic
 export FLASK_APP=run.py
 export FLASK_ENV=development
 
-flask run or
-python3 manager.py runserver
+python3 manager.py run
 ```
 
 #Folder Structure
