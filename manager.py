@@ -12,12 +12,8 @@ app.app_context().push()
 manager = Manager(app)
 
 @manager.command
-def run():
-    app.run()
-
-
-@manager.command
-def test():
+def hello():
+    print("hello")
     """Runs the unit tests."""
     
 if __name__ == '__main__':
